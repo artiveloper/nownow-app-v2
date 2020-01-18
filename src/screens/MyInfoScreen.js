@@ -1,11 +1,28 @@
-import {Layout} from "@ui-kitten/components";
-import {Text} from "react-native";
 import React from "react";
+import {Layout, Text} from "@ui-kitten/components";
 
-const MyInfoScreen = () => (
-    <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text category='h1'>MyInfoScreen</Text>
-    </Layout>
-);
+class MyInfoScreen extends React.Component {
+
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: '내정보',
+            // headerRight:
+            //     <View style={{flex: 1, flexDirection: 'row'}}>
+            //         <TouchableOpacity
+            //             style={{paddingRight: 15}}
+            //             onPress={() => navigation.navigate('PostEditor')}>
+            //         </TouchableOpacity>
+            //     </View>
+        }
+    };
+
+    render() {
+        return (
+            <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <Text category='h1'>MyInfoScreen</Text>
+            </Layout>
+        )
+    }
+}
 
 export default MyInfoScreen;

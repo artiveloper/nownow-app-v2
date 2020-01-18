@@ -1,4 +1,5 @@
 PODS:
+  - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EXAppLoaderProvider (8.0.0)
@@ -47,6 +48,8 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - JWT (3.0.0-beta.11):
+    - Base64 (~> 1.1.2)
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
     - FBLazyVector (= 0.61.5)
@@ -251,6 +254,9 @@ PODS:
     - React
   - RNGestureHandler (1.5.3):
     - React
+  - RNPureJwt (2.1.1):
+    - JWT (= 3.0.0-beta.11)
+    - React
   - RNReanimated (1.4.0):
     - React
   - RNScreens (2.0.0-alpha.22):
@@ -316,6 +322,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNPureJwt (from `../node_modules/react-native-pure-jwt`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -335,7 +342,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Base64
     - boost-for-react-native
+    - JWT
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -425,6 +434,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNPureJwt:
+    :path: "../node_modules/react-native-pure-jwt"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -471,6 +482,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EXAppLoaderProvider: ebdb6bc2632c1ccadbe49f5e4104d8d690969c49
@@ -488,6 +500,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
@@ -510,6 +523,7 @@ SPEC CHECKSUMS:
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   RNCMaskedView: dd13f9f7b146a9ad82f9b7eb6c9b5548fcf6e990
   RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
+  RNPureJwt: b9e795e38e2b6808d3b8934ce413a508e2f76863
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNScreens: 6adf01eb4080f44af6cca551207c6b0505066857
   RNSVG: 9d45f03136ecc9b5497e12f6f20838b568acb9f4

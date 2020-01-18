@@ -43,4 +43,6 @@ target 'NowNowApp' do
 
   # react-native-cli autolinking
   use_native_modules!
+  pod 'RNPureJwt', :path => '../node_modules/react-native-pure-jwt'
+
 end

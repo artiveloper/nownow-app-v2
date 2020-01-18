@@ -1,9 +1,20 @@
-import {observable} from "mobx";
+import {action, observable, reaction} from "mobx";
+import {AsyncStorage} from 'react-native';
+import Reactotron from 'reactotron-react-native'
 
 class CommonStore {
-    constructor(rootStore) {}
 
-    @observable token = 'token'
+    @observable token = '';
+
+    constructor(rootStore) {
+        this.rootStore = rootStore;
+    }
+
+    @action
+    setToken = async (token) => {
+        await AsyncStorage.setItem('token', token);
+        this.token = token;
+    };
 
 }
 

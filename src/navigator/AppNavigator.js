@@ -1,11 +1,18 @@
 import React from 'react';
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {Icon} from "@ui-kitten/components";
+import AuthCheckScreen from "../screens/AuthCheckScreen";
+import AuthScreen from "../screens/AuthScreen";
+import {createStackNavigator} from "react-navigation-stack";
 import HomeScreen from "../screens/HomeScreen";
-import FriendScreen from "../screens/FriendScreen";
+import FollowingScreen from "../screens/FollowingScreen";
 import TransactionScreen from "../screens/TransactionScreen";
 import MyInfoScreen from "../screens/MyInfoScreen";
-import {Icon} from "@ui-kitten/components";
+import { enableScreens } from 'react-native-screens';
+import AddPostScreen from "../repository/AddPostScreen";
+
+enableScreens();
 
 export const BottomTabBarIcon = ({name, focused, tintColor}) => {
     return (
@@ -18,9 +25,45 @@ export const BottomTabBarIcon = ({name, focused, tintColor}) => {
     )
 };
 
+export const HomeStack = createStackNavigator(
+    {
+        HomeScreen: {
+            screen: HomeScreen
+        },
+        AddPostScreen: {
+            screen: AddPostScreen
+        }
+    }
+);
+
+export const FollowingStack = createStackNavigator(
+    {
+        FollowingScreen: {
+            screen: FollowingScreen
+        }
+    }
+);
+
+export const TransactionStack = createStackNavigator(
+    {
+        TransactionScreen: {
+            screen: TransactionScreen
+        }
+    }
+);
+
+export const MyInfoStack = createStackNavigator(
+    {
+        MyInfoScreen: {
+            screen: MyInfoScreen
+        }
+    }
+);
+
+
 const TabNavigator = createBottomTabNavigator({
         '홈': {
-            screen: HomeScreen,
+            screen: HomeStack,
             navigationOptions: {
                 tabBarIcon: ({focused, inactiveTintColor}) =>
                     <BottomTabBarIcon
@@ -31,7 +74,7 @@ const TabNavigator = createBottomTabNavigator({
             }
         },
         '친구': {
-            screen: FriendScreen,
+            screen: FollowingStack,
             navigationOptions: {
                 tabBarIcon: ({focused, inactiveTintColor}) =>
                     <BottomTabBarIcon
@@ -42,7 +85,7 @@ const TabNavigator = createBottomTabNavigator({
             }
         },
         '거래': {
-            screen: TransactionScreen,
+            screen: TransactionStack,
             navigationOptions: {
                 tabBarIcon: ({focused}) =>
                     <BottomTabBarIcon
@@ -52,7 +95,7 @@ const TabNavigator = createBottomTabNavigator({
             }
         },
         '내정보': {
-            screen: MyInfoScreen,
+            screen: MyInfoStack,
             navigationOptions: {
                 tabBarIcon: ({focused}) =>
                     <BottomTabBarIcon
@@ -70,4 +113,15 @@ const TabNavigator = createBottomTabNavigator({
     }
 );
 
-export const AppNavigator = createAppContainer(TabNavigator);
+const switchNavigation = createSwitchNavigator(
+    {
+        TabNavigator: TabNavigator,
+        AuthCheckScreen: AuthCheckScreen,
+        AuthScreen: AuthScreen
+    },
+    {
+        initialRouteName: 'AuthCheckScreen'
+    }
+);
+
+export const AppNavigator = createAppContainer(switchNavigation);
