@@ -1,5 +1,8 @@
 import {computed, extendObservable} from "mobx";
 import {fn_dateTimeToFormatted} from "../utils/Utils";
+import {Dimensions} from 'react-native';
+const {width, height} = Dimensions.get("screen");
+import Reactotron from 'reactotron-react-native';
 
 class PostModel {
 
@@ -14,12 +17,26 @@ class PostModel {
     }
 
     @computed
+    get detailImages() {
+        let result = [];
+
+        this.imagePaths.map(image => {
+            let splited = image.split('/upload/');
+            let imageWidth = Math.floor(width);
+            let s = splited[0] + `/upload/c_scale,h_300,w_${imageWidth}/` + splited[1];
+            result.push(s)
+        });
+
+        return result;
+    }
+
+    @computed
     get computedPrice() {
         let price = 0;
         if (this.postType === 'sale') {
             price = `${getFormattedPoint(this.price)}원`
         } else {
-            price = `${getFormattedPoint(this.price)}원(일)`
+            price = `일 ${getFormattedPoint(this.price)}원`
         }
         return price;
     }

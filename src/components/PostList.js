@@ -4,6 +4,7 @@ import {inject, observer} from "mobx-react";
 import debounce from 'lodash.debounce'
 import PostListItem from "./PostListItem";
 import {Button, Layout, Spinner, Text} from "@ui-kitten/components";
+import Reactotron from 'reactotron-react-native';
 
 class PostList extends React.Component {
 
@@ -16,7 +17,7 @@ class PostList extends React.Component {
     };
 
     handleRefresh = async () => {
-        await this.props.postStore.refreshPosts();
+        await this.props.postStore.refresh();
     };
 
     renderItem = ({item}) => {
@@ -28,13 +29,7 @@ class PostList extends React.Component {
     render() {
         const {inProgress, error, posts, rowCnt, refreshing} = this.props.postStore;
 
-        if (inProgress) {
-            return (
-                <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Spinner/>
-                </Layout>
-            )
-        } else if (error) {
+        if (error) {
             return (
                 <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Text>게시글을 가져오는데 실패했습니다 :(</Text>
@@ -43,20 +38,29 @@ class PostList extends React.Component {
                         onPress={this.handleRefresh}>새로고침</Button>
                 </Layout>
             )
-        } else {
-            return (
-                <FlatList
-                    data={posts}
-                    initialNumToRender={rowCnt}
-                    renderItem={this.renderItem}
-                    keyExtractor={(item, index) => index.toString()}
-                    onEndReached={debounce(this.handleLoadMore, 500)}
-                    onEndReachedThreshold={0.01}
-                    refreshing={refreshing}
-                    onRefresh={this.handleRefresh}
-                />
-            );
         }
+
+        if (inProgress) {
+            return (
+                <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <Spinner/>
+                </Layout>
+            )
+        }
+
+        return (
+            <FlatList
+                data={posts}
+                initialNumToRender={rowCnt}
+                renderItem={this.renderItem}
+                keyExtractor={(item, index) => index.toString()}
+                onEndReached={debounce(this.handleLoadMore, 500)}
+                onEndReachedThreshold={0.01}
+                refreshing={refreshing}
+                onRefresh={this.handleRefresh}
+            />
+        );
+
     }
 
 }

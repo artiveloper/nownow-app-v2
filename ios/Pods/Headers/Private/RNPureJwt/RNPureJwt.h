@@ -1,1 +1,0 @@
-../../../../../node_modules/react-native-pure-jwt/ios/RNPureJwt.h

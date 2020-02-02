@@ -18,20 +18,9 @@ class FollowingScreen extends React.Component {
     };
 
     render() {
-
-        const {errors, inProgress, follows} = this.props.followStore;
-
-        if (inProgress) {
-            return (
-                <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Spinner/>
-                </Layout>
-            )
-        } else {
-            return (
-                <FollowingList/>
-            )
-        }
+        return (
+            <FollowingList/>
+        )
     }
 
 }

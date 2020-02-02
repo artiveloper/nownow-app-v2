@@ -3,6 +3,7 @@ import {AsyncStorage, StatusBar} from "react-native";
 import {Layout, Spinner} from "@ui-kitten/components";
 import jwt from "jwt-decode";
 import Reactotron from 'reactotron-react-native'
+import {inject, observer} from "mobx-react";
 
 class AuthCheckScreen extends React.Component {
 
@@ -20,6 +21,7 @@ class AuthCheckScreen extends React.Component {
             if ( decoded.exp < current_time) {
                 destination = 'AuthScreen';
             }
+            await this.props.userStore.getMyInfo();
             destination = '홈';
         } else {
             destination = 'AuthScreen';
@@ -39,4 +41,4 @@ class AuthCheckScreen extends React.Component {
 
 }
 
-export default AuthCheckScreen;
+export default inject('userStore')(observer(AuthCheckScreen));

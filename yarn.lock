@@ -1329,6 +1329,13 @@
   dependencies:
     react-native-eva-icons "1.1.0"
 
+"@unimodules/core@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-2.0.1.tgz#e5d760aa1a01885871d2d5c3f1fd3404552e5fcb"
+  integrity sha512-evbJUEAf8TvIfzR2/T9npWuqyYE8042qvmE7uWF+uDAt8KclMS9g7clbNTEG1ck5ov9AYWMMgohFaPfDCkJicw==
+  dependencies:
+    compare-versions "^3.4.0"
+
 "@unimodules/core@~5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@unimodules/core/-/core-5.0.0.tgz#e1e3ca3f91f3d27dbc93c6eebc03a40c711da755"
@@ -3244,6 +3251,20 @@ expo-location@~8.0.0:
   integrity sha512-48i4dUCaqPTwSri79yummKwg6vE6loI7d4iHCrbG4EEuN3fhS8I9xU60CEkoNZTziH9zK0iw4KSjr7DbXUAaCw==
   dependencies:
     invariant "^2.2.4"
+
+expo-media-library@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-5.0.1.tgz#f7f3b7fa0808eac224cd966583253380f0af2d1d"
+  integrity sha512-b5DHS+Ga8dyhw1+xQDB7Dafiea1jd91iOXbaE8LWg+awUDXTh6Ss14KMh8WI2mE3DVbBkcuLPTQ9NXlM2Oz67Q==
+
+expo-multiple-media-imagepicker@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/expo-multiple-media-imagepicker/-/expo-multiple-media-imagepicker-1.2.1.tgz#a9b21a775747d7ced54581179a5bf91202c10902"
+  integrity sha512-kjUy5lYvY9YK1ukOEKnoiRgYA9FWsYp57qelw8c26RA8GEi0+fRC1mBvBAM7GJj9AYFFYfnydUua6P87UF7N2g==
+  dependencies:
+    "@unimodules/core" "^2.0.0"
+    expo-media-library "^5.0.1"
+    react-native-safe-area-view "^0.14.6"
 
 expo-permissions@^8.0.0, expo-permissions@~8.0.0:
   version "8.0.0"
@@ -5972,6 +5993,14 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
+react-addons-shallow-compare@15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
+  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-deep-force-update@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.2.tgz#3d2ae45c2c9040cbb1772be52f8ea1ade6ca2ee1"
@@ -6027,6 +6056,11 @@ react-native-gesture-handler@^1.5.3:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-infinite-flatlist-patch@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-infinite-flatlist-patch/-/react-native-infinite-flatlist-patch-1.0.4.tgz#47153e9aa2983fc68f747b600b3bf33f1da036a4"
+  integrity sha512-2bw9wPZn3DdT+t+ROdM9OtVCMPuc3EdOcuCQvE74MoonAV8O/x0kq0/vhlg6Ixp6Pd2CnRiDYEu+kZaWeqN4yQ==
+
 react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
@@ -6039,6 +6073,11 @@ react-native-keyboard-aware-scroll-view@^0.9.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
+
+react-native-progress-circle@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress-circle/-/react-native-progress-circle-2.1.0.tgz#62bdf31c76962d10c5c14446b61ff7d05cf0d0ec"
+  integrity sha512-VP0s92bgbTMQy4hQzPU4LlGyFj3z5u7i1HYFG8/yzXXfGkX1cxKS4xOlE+OTaObWC99w7Bodi3h8R7En2nQPYw==
 
 react-native-reanimated@^1.4.0:
   version "1.4.0"
@@ -6070,6 +6109,14 @@ react-native-screens@^2.0.0-alpha.22:
   integrity sha512-2U++QrTf8H989ekHbgFuia8LLd8/+SbXra+rqDAOihCNRLFi91+y5QGgc7DP4Ic9MtHTaYRtWopyfyUo4ybD0A==
   dependencies:
     debounce "^1.2.0"
+
+react-native-snap-carousel@^3.8.4:
+  version "3.8.4"
+  resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-3.8.4.tgz#4c749c6a714d46ed82de527233850cb5da41bc62"
+  integrity sha512-KMxLl75Tyf12DzeTCtV7xU0KuPZQQs/2+2iM90cgxcm3lrg4+hLXff5/61ynasBkzzJ5v4bTRq5CEy/qGUJVQw==
+  dependencies:
+    prop-types "^15.6.1"
+    react-addons-shallow-compare "15.6.2"
 
 react-native-svg@^10.0.0:
   version "10.0.0"

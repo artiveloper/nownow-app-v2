@@ -1,11 +1,14 @@
 PODS:
-  - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EXAppLoaderProvider (8.0.0)
   - EXConstants (8.0.0):
     - UMConstantsInterface
     - UMCore
+  - EXContacts (8.0.0):
+    - UMCore
+    - UMFileSystemInterface
+    - UMPermissionsInterface
   - EXErrorRecovery (1.0.0):
     - UMCore
   - EXFileSystem (8.0.0):
@@ -22,6 +25,9 @@ PODS:
     - UMCore
     - UMPermissionsInterface
     - UMTaskManagerInterface
+  - EXMediaLibrary (5.0.1):
+    - UMCore
+    - UMPermissionsInterface
   - EXPermissions (8.0.0):
     - UMCore
     - UMPermissionsInterface
@@ -48,8 +54,15 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - JWT (3.0.0-beta.11):
-    - Base64 (~> 1.1.2)
+  - libwebp (1.1.0):
+    - libwebp/demux (= 1.1.0)
+    - libwebp/mux (= 1.1.0)
+    - libwebp/webp (= 1.1.0)
+  - libwebp/demux (1.1.0):
+    - libwebp/webp
+  - libwebp/mux (1.1.0):
+    - libwebp/demux
+  - libwebp/webp (1.1.0)
   - RCTRequired (0.61.5)
   - RCTTypeSafety (0.61.5):
     - FBLazyVector (= 0.61.5)
@@ -252,10 +265,11 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - RNCMaskedView (0.1.5):
     - React
-  - RNGestureHandler (1.5.3):
+  - RNFastImage (7.0.2):
     - React
-  - RNPureJwt (2.1.1):
-    - JWT (= 3.0.0-beta.11)
+    - SDWebImage (~> 5.0)
+    - SDWebImageWebPCoder (~> 0.2.3)
+  - RNGestureHandler (1.5.3):
     - React
   - RNReanimated (1.4.0):
     - React
@@ -263,6 +277,12 @@ PODS:
     - React
   - RNSVG (10.0.0):
     - React
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
+  - SDWebImageWebPCoder (0.2.5):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.0)
   - UMBarCodeScannerInterface (5.0.0)
   - UMCameraInterface (5.0.0)
   - UMConstantsInterface (5.0.0)
@@ -284,12 +304,14 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXContacts (from `../node_modules/expo-contacts/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - EXLocation (from `../node_modules/expo-location/ios`)
+  - EXMediaLibrary (from `../node_modules/expo-media-library/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - EXSQLite (from `../node_modules/expo-sqlite/ios`)
   - EXWebBrowser (from `../node_modules/expo-web-browser/ios`)
@@ -321,8 +343,8 @@ DEPENDENCIES:
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNPureJwt (from `../node_modules/react-native-pure-jwt`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -342,9 +364,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Base64
     - boost-for-react-native
-    - JWT
+    - libwebp
+    - SDWebImage
+    - SDWebImageWebPCoder
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -355,6 +378,9 @@ EXTERNAL SOURCES:
   EXConstants:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-constants/ios"
+  EXContacts:
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-contacts/ios"
   EXErrorRecovery:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-error-recovery/ios"
@@ -373,6 +399,9 @@ EXTERNAL SOURCES:
   EXLocation:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-location/ios"
+  EXMediaLibrary:
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-media-library/ios"
   EXPermissions:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-permissions/ios"
@@ -432,10 +461,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNFastImage:
+    :path: "../node_modules/react-native-fast-image"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
-  RNPureJwt:
-    :path: "../node_modules/react-native-pure-jwt"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -482,17 +511,18 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EXAppLoaderProvider: ebdb6bc2632c1ccadbe49f5e4104d8d690969c49
   EXConstants: 4051b16c17ef3defa03c541d42811dc92b249146
+  EXContacts: 95e26905d2b552cc588ca63936fa5543880d9c27
   EXErrorRecovery: d36db99ec6a3808f313f01b0890eb443796dd1c2
   EXFileSystem: 6e0d9bb6cc4ea404dbb8f583c1a8a2dcdf4b83b6
   EXFont: 6187b5ab46ee578d5f8e7f2ea092752e78772235
   EXKeepAwake: 66e9f80b6d129633725a0e42f8d285c229876811
   EXLinearGradient: 75f302f9d6484267a3f6d3252df2e7a5f00e716a
   EXLocation: 3c75d012ca92eed94d4338778d79c49d1252393a
+  EXMediaLibrary: 82ef81d52d18b93c34b3b4958ff87d3ef53d1ca8
   EXPermissions: 9bc08859a675d291e89be9a0870155c27c16ac35
   EXSQLite: 220226a354912b100dfe913f5fe6f31762c8927e
   EXWebBrowser: db32607359fb7b55b7b7b91df32dd3d8355bb3b7
@@ -500,7 +530,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
+  libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
@@ -522,11 +552,13 @@ SPEC CHECKSUMS:
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   RNCMaskedView: dd13f9f7b146a9ad82f9b7eb6c9b5548fcf6e990
+  RNFastImage: 9b0c22643872bb7494c8d87bbbb66cc4c0d9e7a2
   RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
-  RNPureJwt: b9e795e38e2b6808d3b8934ce413a508e2f76863
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNScreens: 6adf01eb4080f44af6cca551207c6b0505066857
   RNSVG: 9d45f03136ecc9b5497e12f6f20838b568acb9f4
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
+  SDWebImageWebPCoder: 947093edd1349d820c40afbd9f42acb6cdecd987
   UMBarCodeScannerInterface: 3802c8574ef119c150701d679ab386e2266d6a54
   UMCameraInterface: 985d301f688ed392f815728f0dd906ca34b7ccb1
   UMConstantsInterface: bda5f8bd3403ad99e663eb3c4da685d063c5653c
@@ -541,6 +573,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: a98e37a576a5220bf43b8faf33cfdc129d2f441d
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 3280df874ce0e7486f3699f59ad5b1a492b1c2b9
+PODFILE CHECKSUM: 729a9d33263c4fea8a7553fb5457df45a5eb58d3
 
 COCOAPODS: 1.9.0.beta.2

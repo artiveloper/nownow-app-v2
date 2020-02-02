@@ -12,7 +12,7 @@ const rootStore = new RootStore();
 Reactotron
     .configure({
         // host: '172.16.20.12'
-        host: '192.168.31.202'
+        host: '192.168.123.105'
     }) // controls connection & communication settings
     .useReactNative() // add all built-in react native plugins
     .connect(); // let's connect!

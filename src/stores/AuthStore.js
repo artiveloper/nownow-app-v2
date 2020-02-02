@@ -1,8 +1,9 @@
 import {action, observable} from "mobx";
-import Reactotron from 'reactotron-react-native';
 import AuthRepository from "../repository/AuthRepository";
-import CommonStore from "./CommonStore";
-import {AsyncStorage} from "react-native-web";
+import {AsyncStorage} from 'react-native';
+import Reactotron from 'reactotron-react-native';
+import UserStore from "./UserStore";
+import UserRepository from "../repository/UserRepository";
 
 class AuthStore {
 
@@ -26,9 +27,6 @@ class AuthStore {
 
     @action
     sendAuthCode = () => {
-        Reactotron.log(`이름 : ${this.nickName}`);
-        Reactotron.log(`휴대폰 번호 : ${this.phoneNumber}`);
-
         this.nickName = this.nickName.trim();
         this.phoneNumber = this.phoneNumber.trim();
 
@@ -72,11 +70,9 @@ class AuthStore {
 
         try {
             this.inProgress = true;
-            this.errors = undefined;
-
             const {data} = await AuthRepository.login(this.nickName, this.phoneNumber);
             await AsyncStorage.setItem('token', data.accessToken);
-
+            await this.rootStore.userStore.getMyInfo();
         } catch (e) {
             this.errors = e.response;
         } finally {

@@ -65,8 +65,6 @@ class FollowStore {
             this.follows = this.refreshing
                 ? data
                 : this.follows.concat(data);
-            this.lastNum += 1;
-            Reactotron.log("data : ", data);
         } catch (e) {
             this.error = true;
         } finally {

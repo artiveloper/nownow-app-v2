@@ -4,6 +4,7 @@ import {inject, observer} from "mobx-react";
 import FollowingListItem from "./FollowingListItem";
 import debounce from "lodash.debounce";
 import Reactotron from 'reactotron-react-native'
+import {Layout, Spinner, Text} from "@ui-kitten/components";
 
 class FollowingList extends React.Component {
 
@@ -27,7 +28,15 @@ class FollowingList extends React.Component {
 
     render() {
 
-        const {refreshing, follows, rowCnt} = this.props.followStore;
+        const {inProgress, refreshing, follows, rowCnt} = this.props.followStore;
+
+        if (inProgress) {
+            return (
+                <Layout style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <Spinner/>
+                </Layout>
+            )
+        }
 
         return (
             <FlatList
@@ -40,7 +49,7 @@ class FollowingList extends React.Component {
                 refreshing={refreshing}
                 onRefresh={this.handleRefresh}
             />
-        )
+        );
     }
 
 }

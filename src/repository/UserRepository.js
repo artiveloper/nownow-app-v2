@@ -7,14 +7,23 @@ const api = axios.create({
 
 class UserRepository {
 
-    findUser = (token) => {
+    findUserByToken = (token) => {
         return api.get('/me', {
-            headers: {
-                Authorization: `Bearer ${token}`
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        })
-    }
+        )
+    };
 
+    findUserById = (token, friendId) => {
+        return api.get(`/friend/${friendId}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        )
+    };
 }
 
 export default new UserRepository();
