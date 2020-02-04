@@ -19,7 +19,6 @@ class MessageStore {
         this.destNum = destNum;
     };
 
-
 }
 
 export default MessageStore;

@@ -2,6 +2,7 @@ import React from "react";
 import {Image, StyleSheet, TouchableHighlight, View} from 'react-native';
 import {Button, Divider, Layout, Text} from "@ui-kitten/components";
 import {CONTAINER_SIZE} from "../constants/Layouts";
+import {inject, observer} from "mobx-react";
 
 const TradingOrderListItem = ({item, navigation}) => {
 
@@ -38,6 +39,13 @@ const TradingOrderListItem = ({item, navigation}) => {
                     </Layout>
                 </Layout>
             </TouchableHighlight>
+            <Layout style={{paddingBottom: 10}}>
+                {
+                    userStore.userId === String(item.sellerId)
+                        ? <Button onPress={() => handleOkRequest('hi')} style={{width: '100%'}}>거래 수락</Button>
+                        : <Button onPress={() => alert('취소는 안돼요!ㅎㅎ')} style={{width: '100%'}}>요청 취소</Button>
+                }
+            </Layout>
             <Divider/>
         </Layout>
     );
@@ -77,4 +85,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TradingOrderListItem;
+export default inject('orderStore', 'userStore')(observer(TradingOrderListItem));

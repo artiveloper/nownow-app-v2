@@ -21,7 +21,7 @@ class RootStore {
         this.followStore = new FollowStore(this);
         this.addPostStore = new AddPostStore(this);
         this.orderStore = new OrderStore(this);
-        this.messeageStore = new MessageStore(this);
+        this.messageStore = new MessageStore(this);
         this.requestingOrderStore = new RequestingOrderStore(this);
         this.tradingOrderStore = new TradingOrderStore(this);
         this.completedOrderStore = new CompletedOrderStore(this);

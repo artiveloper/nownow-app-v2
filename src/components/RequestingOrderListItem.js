@@ -1,9 +1,16 @@
 import React from "react";
 import {Image, StyleSheet, TouchableHighlight, View} from 'react-native';
-import {Button, Divider, Layout, Text} from "@ui-kitten/components";
+import {Button, ButtonGroup, Divider, Layout, Text} from "@ui-kitten/components";
 import {CONTAINER_SIZE} from "../constants/Layouts";
+import {inject, observer} from "mobx-react";
+import Reactotron from 'reactotron-react-native';
 
-const RequestingOrderListItem = ({item, navigation}) => {
+const RequestingOrderListItem = ({item, orderStore, userStore}) => {
+
+    const handleOkRequest = ({message}) => {
+        //await orderStore.okRequesting({item});
+        Reactotron.log(message)
+    };
 
     return (
         <Layout style={{paddingHorizontal: CONTAINER_SIZE}}>
@@ -38,6 +45,15 @@ const RequestingOrderListItem = ({item, navigation}) => {
                     </Layout>
                 </Layout>
             </TouchableHighlight>
+
+            <Layout style={{paddingBottom: 10}}>
+                {
+                    userStore.userId === String(item.sellerId)
+                        ? <Button onPress={() => handleOkRequest('hi')} style={{width: '100%'}}>거래 수락</Button>
+                        : <Button onPress={() => alert('취소는 안돼요!ㅎㅎ')} style={{width: '100%'}}>요청 취소</Button>
+                }
+            </Layout>
+
             <Divider/>
         </Layout>
     );
@@ -77,4 +93,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default RequestingOrderListItem;
+
+export default inject('orderStore', 'userStore')(observer(RequestingOrderListItem));

@@ -44,3 +44,7 @@ export const PlusIcon = () => (
 export const MinusIcon = () => (
     <Icon name='minus-circle-outline' width={ROOT_HEADER_ICON_SIZE} height={ROOT_HEADER_ICON_SIZE}/>
 );
+
+export const SyncContactIcon = () => (
+    <Icon name='sync-outline' width={ROOT_HEADER_ICON_SIZE} height={ROOT_HEADER_ICON_SIZE}/>
+);

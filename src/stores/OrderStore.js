@@ -133,8 +133,8 @@ class OrderStore {
             await orderRepository.okRequesting(token, order.orderId);
 
             await this.rootStore.userStore.getFriendInfo(order.consumerId);
-            //let message = `[나우나우] ${order.sellerName}님께서 거래를 수락하셨습니다. 자세한 내용은 나우나우 앱에서 확인해주세요.`;
-            //await messageRepository.sendMessage(this.rootStore.messageStore.destNum, message);
+            let message = `[나우나우] ${order.sellerName}님께서 거래를 수락하셨습니다. 자세한 내용은 나우나우 앱에서 확인해주세요.`;
+            await messageRepository.sendMessage(this.rootStore.messageStore.destNum, message);
         } catch (e) {
             Reactotron.log(e);
         } finally {
@@ -170,8 +170,8 @@ class OrderStore {
             }
 
             await this.rootStore.userStore.getFriendInfo(destNumId);
-            //let message = `[나우나우] ${name}님과의 거래가 완료되었습니다. 자세한 내용은 나우나우 앱에서 확인해주세요.`;
-            //await messageRepository.sendMessage(this.rootStore.messageStore.destNum, message);
+            let message = `[나우나우] ${name}님과의 거래가 완료되었습니다. 자세한 내용은 나우나우 앱에서 확인해주세요.`;
+            await messageRepository.sendMessage(this.rootStore.messageStore.destNum, message);
         } catch (e) {
             Reactotron.log(e);
         } finally {

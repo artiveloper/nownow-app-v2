@@ -43,9 +43,6 @@ class PostDetailScreen extends React.Component {
         let postId = navigation.getParam("postId");
         await postStore.getPost(postId);
 
-        Reactotron.log("postStore.post.writerId", postStore.post.writerId);
-        Reactotron.log("userStore.id", userStore.userId);
-
         if (postStore.post.writerId == userStore.userId) {
             navigation.setParams({'handleDeletePost': this.handleDeletePost});
         }
@@ -80,7 +77,6 @@ class PostDetailScreen extends React.Component {
 
     handleOrderSubmit = () => {
         const {navigation, orderStore, postStore} = this.props;
-        Reactotron.log("this.handleOrderSubmit");
         orderStore.setOrder(postStore.post);
         navigation.navigate("OrderScreen");
     };

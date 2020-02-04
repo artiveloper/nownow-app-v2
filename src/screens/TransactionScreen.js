@@ -26,7 +26,6 @@ class TransactionScreen extends React.Component {
     };
 
     handleTabIndex = async (selectedIndex) => {
-
         this.setState({
             selectedIndex
         });

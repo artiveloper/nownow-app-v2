@@ -31,8 +31,7 @@ class OrderScreen extends React.Component {
         const {navigation, orderStore} = this.props;
         await orderStore.requestOrder();
         navigation.popToTop();
-        /*navigation.dispatch(resetHomeStackAction());
-        navigation.dispatch(goTransactionScreenAfterOrderRequest(REQUESTING));*/
+        navigation.navigate('TransactionScreen');
     };
 
     render() {

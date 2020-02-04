@@ -36,20 +36,20 @@ class FollowStore {
         try {
             this.inProgress = true;
 
-            this.contacts = contacts.map(contact => {
-                const result = {};
-                if (contact.name) {
-                    result['name'] = contact.name;
-                }
-                if (contact.phoneNumbers && contact.phoneNumbers[0]) {
+            contacts.map(contact => {
+                if (contact.name && contact.phoneNumbers && contact.phoneNumbers[0]) {
                     let phoneNumber = contact.phoneNumbers[0];
-                    result['phoneNumber'] = phoneNumber.digits ? this.replacePhoneNumber(phoneNumber.digits) : this.replacePhoneNumber(phoneNumber.number)
+                    this.contacts.push({
+                        "followedPhoneNumber": phoneNumber.digits ? this.replacePhoneNumber(phoneNumber.digits) : this.replacePhoneNumber(phoneNumber.number),
+                        "followedName": contact.name
+                    })
                 }
-                return result;
             });
 
             let token = await AsyncStorage.getItem("token");
-            await FollowRepository.saveFollows(token, this.contacts)
+
+            await FollowRepository.saveFollows(token, this.contacts);
+
         } catch (e) {
             this.errors = true;
         } finally {
