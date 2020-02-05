@@ -13,7 +13,7 @@ class RequestingOrderList extends React.Component {
     }
 
     handleLoadMore = async () => {
-        if (this.props.requestingOrderStore.requestingList.length < 4) return;
+        if (this.props.requestingOrderStore.requestingList.length < 10) return;
         await this.props.requestingOrderStore.getRequestingList();
     };
 

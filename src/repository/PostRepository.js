@@ -53,7 +53,7 @@ class PostRepository {
                 Authorization: `Bearer ${token}`
             }
         })
-    }
+    };
 
     findAllMyPostList = (token, lastNum, rowCnt) => {
         return api.get(`/mypost/${lastNum}/${rowCnt}`, {

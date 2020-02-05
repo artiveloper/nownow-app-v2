@@ -13,7 +13,7 @@ class CompletedOrderList extends React.Component {
     }
 
     handleLoadMore = async () => {
-        if (this.props.completedOrderStore.completedList.length < 4) return;
+        if (this.props.completedOrderStore.completedList.length < 10) return;
         await this.props.completedOrderStore.getCompletedList();
     };
 

@@ -1,9 +1,10 @@
 import React from "react";
-import {Layout, Tab, TabView} from "@ui-kitten/components";
-import {ROOT_HEADER_TITLE_SIZE} from "../constants/Layouts";
+import {Layout, Text} from "@ui-kitten/components";
+import {CONTAINER_SIZE, ROOT_HEADER_TITLE_SIZE} from "../constants/Layouts";
 import {StyleSheet} from "react-native";
-import PointHistoryList from "../components/PointHistoryList";
 import MyPostList from "../components/MyPostList";
+import {inject, observer} from "mobx-react";
+import {getFormattedPoint} from "../utils/Utils";
 
 class MyInfoScreen extends React.Component {
 
@@ -18,50 +19,32 @@ class MyInfoScreen extends React.Component {
         }
     };
 
-    state = {
-        selectedIndex: 0
-    };
-
-    handleTabIndex = async (selectedIndex) => {
-
-        this.setState({
-            selectedIndex
-        });
-    };
-
-    shouldLoadComponent = (index) => index === this.state.selectedIndex;
-
     render() {
+
+        const {nickName, point} = this.props.userStore;
+
         return (
-            <Layout style={{flex: 1}}>
-                <TabView
-                    tabBarStyle
-                    selectedIndex={this.state.selectedIndex}
-                    onSelect={this.handleTabIndex}
-                    shouldLoadComponent={this.shouldLoadComponent}>
-                    <Tab title='거래 내역' style={styles.tab}>
-                        <Layout style={styles.tabContent}>
-                            <PointHistoryList/>
-                        </Layout>
-                    </Tab>
-                    <Tab title='내 글 목록' style={styles.tab}>
-                        <Layout style={styles.tabContent}>
-                            <MyPostList/>
-                        </Layout>
-                    </Tab>
-                </TabView>
+            <Layout style={styles.container}>
+                <Layout style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Text category='h3' style={{paddingVertical: 15}}>{nickName}</Text>
+                </Layout>
+                <Layout style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Text>현재 포인트</Text>
+                    <Text category='h6' style={{paddingLeft: 5}}>{getFormattedPoint(point)}원</Text>
+                </Layout>
+
+                <Text category='h6' style={{paddingTop: 20}}>내가 쓴 글</Text>
+                <MyPostList/>
             </Layout>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    tab: {
-        padding: 10,
-    },
-    tabContent: {
-        height: '100%'
+    container: {
+        flex: 1,
+        paddingHorizontal: CONTAINER_SIZE
     }
 });
 
-export default MyInfoScreen;
+export default inject('userStore')(observer(MyInfoScreen));

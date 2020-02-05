@@ -3,12 +3,19 @@ import {Image, StyleSheet, TouchableHighlight, View} from 'react-native';
 import {Button, Divider, Layout, Text} from "@ui-kitten/components";
 import {CONTAINER_SIZE} from "../constants/Layouts";
 import {TRADING} from "../constants/Status";
+import {withNavigation} from "react-navigation";
 
 const CompletedOrderListItem = ({item, navigation}) => {
 
+    const handleItemClick = (postId) => {
+        navigation.navigate('PostDetailScreen', {
+            postId: postId
+        })
+    };
+
     return (
         <Layout style={{paddingHorizontal: CONTAINER_SIZE}}>
-            <TouchableHighlight onPress={() => alert("상세보기는 다음에...")}>
+            <TouchableHighlight onPress={() => handleItemClick(item.postId)}>
                 <Layout style={styles.container}>
                     {
                         item.postImagePaths.length > 0 ?
@@ -78,4 +85,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CompletedOrderListItem;
+export default withNavigation(CompletedOrderListItem);

@@ -12,7 +12,7 @@ class TradingOrderList extends React.Component {
     }
 
     handleLoadMore = async () => {
-        if (this.props.tradingOrderStore.tradingList.length < 4) return;
+        if (this.props.tradingOrderStore.tradingList.length < 10) return;
         await this.props.tradingOrderStore.getTradingList();
     };
 

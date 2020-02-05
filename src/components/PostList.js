@@ -13,6 +13,7 @@ class PostList extends React.Component {
     }
 
     handleLoadMore = async () => {
+        if (this.props.postStore.posts.length < 10) return;
         await this.props.postStore.getPosts();
     };
 

@@ -1,7 +1,9 @@
 import {action, observable} from "mobx";
 import {AsyncStorage} from "react-native";
 import userRepository from "../repository/UserRepository";
+import postRepository from '../repository/PostRepository';
 import Reactotron from 'reactotron-react-native'
+import PostModel from "../model/PostModel";
 
 class UserStore {
 
@@ -34,6 +36,9 @@ class UserStore {
 
     @observable
     myPostRowCnt = 10;
+
+    @observable
+    refreshing = false;
 
     @action
     getMyInfo = async () => {
@@ -78,12 +83,12 @@ class UserStore {
     getMyPosts = async () => {
         try {
             let token = await AsyncStorage.getItem("token");
-            const {data} = await userRepository.findAllMyPostList(token, this.myPostLastNum, this.myPostRowCnt);
+            const {data} = await postRepository.findAllMyPostList(token, this.myPostLastNum, this.myPostRowCnt);
             this.myPosts = this.refreshing
                 ? data.map(post => new PostModel(post))
                 : this.myPosts.concat(data.map(post => new PostModel(post)));
         } catch (e) {
-            this.error = this.message;
+            //this.error = this.message;
         } finally {
             if (this.myPosts.length > 1) {
                 this.myPostLastNum = this.myPosts[this.myPosts.length - 1].orderId;

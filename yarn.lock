@@ -6056,11 +6056,6 @@ react-native-gesture-handler@^1.5.3:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-infinite-flatlist-patch@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-infinite-flatlist-patch/-/react-native-infinite-flatlist-patch-1.0.4.tgz#47153e9aa2983fc68f747b600b3bf33f1da036a4"
-  integrity sha512-2bw9wPZn3DdT+t+ROdM9OtVCMPuc3EdOcuCQvE74MoonAV8O/x0kq0/vhlg6Ixp6Pd2CnRiDYEu+kZaWeqN4yQ==
-
 react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"

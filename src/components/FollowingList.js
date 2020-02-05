@@ -13,6 +13,7 @@ class FollowingList extends React.Component {
     }
 
     handleLoadMore = async () => {
+        if(this.props.followStore.follows.length > 10) return;
         await this.props.followStore.getFollows();
     };
 

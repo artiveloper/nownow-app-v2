@@ -13,6 +13,7 @@ import AddPostScreen from "../screens/AddPostScreen";
 import PostDetailScreen from "../screens/PostDetailScreen";
 import OrderScreen from "../screens/OrderScreen";
 import {BottomTabBarIcon} from "../components/Icons";
+import Reactotron from 'reactotron-react-native';
 
 enableScreens();
 
@@ -61,14 +62,25 @@ const TransactionStack = createStackNavigator(
         PostDetailScreen: {
             screen: PostDetailScreen
         }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            tabBarVisible: navigation.state.routes[navigation.state.index].routeName === 'TransactionScreen'
+        })
     }
 );
 
 const MyInfoStack = createStackNavigator(
     {
-        MyInfoScreen: {
-            screen: MyInfoScreen
+        MyInfoScreen,
+        PostDetailScreen: {
+            screen: PostDetailScreen
         }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            tabBarVisible: navigation.state.routes[navigation.state.index].routeName === 'MyInfoScreen'
+        })
     }
 );
 

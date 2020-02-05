@@ -12,7 +12,7 @@ class MyPostList extends React.Component {
     }
 
     handleLoadMore = async () => {
-        if (this.props.userStore.myPosts.length < 4) return;
+        if (this.props.userStore.myPosts.length < 10) return;
         await this.props.userStore.getMyPosts();
     };
 
